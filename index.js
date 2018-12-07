@@ -32,7 +32,7 @@ login({email: "minhnq22", password: "gt3q2-fls09-D12M5-##98#"}, function callbac
         if(err) return console.error(err);
         
         if (message.senderID != myID) {
-            
+
             api.getUserInfo(message.senderID, function(err, ret) {
                 if (err) return console.error(err);
                 for (var prop in ret) {
@@ -43,7 +43,8 @@ login({email: "minhnq22", password: "gt3q2-fls09-D12M5-##98#"}, function callbac
                     }
                 }
             });
-            console.log("***From", nameSender, ":");
+            if (message.isGroup) console.log("***From", nameSender, "on Group chat:");
+            else console.log("***From", nameSender, ":");
             console.log(message.body);
             console.log("----------");
             if (!message.isGroup) {
